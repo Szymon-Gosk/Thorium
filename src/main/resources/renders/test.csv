@@ -1,0 +1,2 @@
+"name","latex"
+"test","\left[2.0 + i\cdot 3.0, \ 4.0 + i\cdot 5.0, \ 0.0 + i\cdot 0.0\right] + \left[1.0 + i\cdot 2.0, \ -2.0 + i\cdot -7.0, \ 0.0 + i\cdot 0.0\right] = \left[3.0 + i\cdot 5.0, \ 2.0 + i\cdot -2.0, \ 0.0 + i\cdot 0.0\right] \\ "
