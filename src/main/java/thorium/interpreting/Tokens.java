@@ -1,4 +1,4 @@
-package interpreting;
+package thorium.interpreting;
 
 public interface Tokens {
 

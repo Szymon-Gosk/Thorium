@@ -1,4 +1,4 @@
-package interpreting;
+package thorium.interpreting;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -168,7 +168,7 @@ public class Interpreter {
     }
 
     @Contract(pure = true)
-    private boolean isNumber(@NotNull String str) {
+    static boolean isNumber(@NotNull String str) {
         return str.matches("([0-9]+(.[0-9]+)?i?|i[0-9]+(.[0-9]+)?|i)");
     }
 
