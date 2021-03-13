@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     let obj = $(".toRender")
 
-    $('.target').html(katex.renderToString( "" + obj.text(), {
+    $('.target').html(katex.renderToString(obj.text() + "\\\\", {
         throwOnError: false,
     }));
 

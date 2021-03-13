@@ -32,13 +32,26 @@
 </head>
 <body>
 
-    <div class="container" th:each="r : ${renders}">
-        <span class="toRender" th:text="${r.latex}"></span>
+    <form class="a" method="POST" th:action="@{/}" th:object="${query}">
+        <input class="a" type="text" name="q" placeholder="Input" aria-label="Input" th:field="*{content}">
+        <button class="a" type="submit" value="Submit" name="action">Calculate</button>
+    </form>
+
+    <div th:each="query : ${queries}">
+        <span class="toRender" th:text="${query.content}"></span>
     </div>
 
-    <div class="t" >
+    <div>
         <span class="target"></span>
     </div>
+
+<!--    <div class="container" th:each="r : ${renders}">-->
+<!--        <span class="toRender" th:text="${r.latex}"></span>-->
+<!--    </div>-->
+
+<!--    <div class="t" >-->
+<!--        <span class="target"></span>-->
+<!--    </div>-->
 
     <script type="application/javascript" th:src="@{/javascript/test.js}"></script>
 

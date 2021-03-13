@@ -15,16 +15,13 @@ import javax.persistence.Id;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Render {
+public class Query {
 
     @Id
     @GeneratedValue
     private long id;
 
-    @Column(length = 256)
-    private String name;
-
     @Column(length = 65536)
-    private String latex;
+    private String content;
 
 }

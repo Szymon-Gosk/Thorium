@@ -10,9 +10,9 @@ object CSVProcessor extends App {
 
   `export`("test", "test")
 
-  def process: Seq[String] = {
-    Seq(Processor.run(4))
-  }
+  def process: Seq[String] = Seq(
+    Processor.run(1)
+  )
 
   def export(filename: String, buildname: String): Unit = {
     val outputFile = new BufferedWriter(new FileWriter("src\\main\\resources\\renders\\" + filename + ".csv"))

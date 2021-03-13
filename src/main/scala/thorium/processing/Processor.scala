@@ -1,8 +1,8 @@
 package thorium.processing
 
-import thorium.math.algebra.components.Row
-import thorium.math.arithmetic.cardinals.Aleph
-import thorium.math.arithmetic.infinities.{DirectedInfinity, IndeterminateInfinity}
+import thorium.latex.Latex
+import thorium.math.algebra.components.{Matrix, Row}
+import thorium.math.arithmetic.infinities.IndeterminateInfinity
 import thorium.math.arithmetic.numbers.Complex
 import thorium.math.general.exceptions.InfiniteValueException
 
@@ -23,14 +23,27 @@ object Processor {
   }
 
   private def run1(): String = {
-    val a1 = Aleph(1)
-    val a2 = Aleph(2)
-    a1.latex + " \\cdot " + a2.latex + " = " + (a1*a2).latex + " \\\\ "
+    val M = new Matrix(Vector(
+      Vector(Complex(1, 0), Complex(2, 0), Complex(3, 0)),
+      Vector(Complex(4, 0), Complex(5, 0), Complex(6, 0)),
+      Vector(Complex(7, 0), Complex(8, 0), Complex(9, 0))
+    ))
+    Latex.mathrm("sub") + "_{" + Latex.parentheses("1, 1") + "}" + Latex.parentheses(M.latex + "^T") +
+      " = " + M.transpose.submatrix(1, 1).latex
   }
 
   private def run2(): String = {
-    val inf = DirectedInfinity(Complex(-1, 1))
-    inf.latex + " \\\\ "
+    val M1 = new Matrix(Vector(
+      Vector(Complex(2, 1), Complex(4, 6), Complex(3, 0)),
+      Vector(Complex(-1, -1), Complex(-3, 0), Complex(0, 1)),
+      Vector(Complex(1, 0), Complex(0, -2), Complex(0, 2))
+    ))
+    val M2 = new Matrix(Vector(
+      Vector(Complex(1, 3), Complex(-3, 2)),
+      Vector(Complex(2, -1), Complex(2, 0)),
+      Vector(Complex(-4, 0), Complex(3, 4))
+    ))
+    M1.latex(Matrix.PARENTHESES) + " \\cdot " + M2.latex(Matrix.PARENTHESES) + " = " + (M1 * M2).latex(Matrix.PARENTHESES)
   }
 
   private def run3(): String = {

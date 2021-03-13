@@ -161,6 +161,8 @@ class Complex(private val _re: Double, private val _im: Double) extends Entity {
 
   // ----- MISC -----
 
+  def conjugate: Complex = Complex(_re, 0 - _im)
+
   def mod: Complex = {
     if(_im == 0) {
       return Complex(Math.abs(_re), 0)
@@ -236,7 +238,79 @@ class Complex(private val _re: Double, private val _im: Double) extends Entity {
 
   override def unicode: String = _re + " + i∙" + _im
 
-  override def latex: String = _re + " + i\\cdot " + _im
+  override def latex: String = formatLatex()
+
+  private def formatLatex(): String = {
+    if (this == Complex.zero) return "0"
+    if(_im == 0) {
+      if(_re < 0) {
+        if(_re.isWhole()) {
+          "-" + math.abs(_re).toInt
+        } else {
+          "-" + math.abs(_re)
+        }
+      } else {
+        if(_re.isWhole()) {
+          "" +_re.toInt
+        } else {
+          "" + _re
+        }
+      }
+    } else if(_re == 0) {
+      if(_im < 0) {
+        if(_im == -1.0) {
+          return "-i"
+        }
+        if(_im.isWhole()) {
+          "-" + math.abs(_im).toInt + "i"
+        } else {
+          "-i\\cdot " + _im
+        }
+      } else {
+        if(_im == 1.0) {
+          return "i"
+        }
+        if(_im.isWhole()) {
+          _im.toInt + "i"
+        } else {
+          "i\\cdot " + _im
+        }
+      }
+    } else {
+      var output = ""
+      if(_re < 0) {
+        if(_re.isWhole()) {
+          output = output + "-" + math.abs(_re).toInt
+        } else {
+          output = output + "-" + math.abs(_re)
+        }
+      } else {
+        if(_re.isWhole()) {
+          output = output + _re.toInt
+        } else {
+          output = output + _re
+        }
+      }
+      if(_im < 0) {
+        if(_im == -1.0) {
+          output = output + " -i"
+        }  else if(_im.isWhole()) {
+          output = output + " - " + math.abs(_im).toInt + "i"
+        } else {
+          output = output + " - i\\cdot " + math.abs(_im)
+        }
+      } else {
+        if(_im == 1.0) {
+          output = output + " +i"
+        } else if(_im.isWhole()) {
+          output = output + " + " + _im.toInt + "i"
+        } else {
+          output = output + " + i\\cdot " + _im
+        }
+      }
+      output
+    }
+  }
 
 }
 

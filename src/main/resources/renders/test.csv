@@ -1,2 +1,9 @@
 "name","latex"
-"test","\left[2.0 + i\cdot 3.0, \ 4.0 + i\cdot 5.0, \ 0.0 + i\cdot 0.0\right] + \left[1.0 + i\cdot 2.0, \ -2.0 + i\cdot -7.0, \ 0.0 + i\cdot 0.0\right] = \left[3.0 + i\cdot 5.0, \ 2.0 + i\cdot -2.0, \ 0.0 + i\cdot 0.0\right] \\ "
+"test","\mathrm{sub}_{\left( 1, 1 \right)}\left( \begin{bmatrix}
+1 & 2 & 3 \\ 
+4 & 5 & 6 \\ 
+7 & 8 & 9 \\ 
+\end{bmatrix}^T \right) = \begin{bmatrix}
+1 & 7 \\ 
+3 & 9 \\ 
+\end{bmatrix}"
