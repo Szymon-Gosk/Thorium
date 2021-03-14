@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import thorium.interpreting.Interpreter;
+import thorium.interpreting.Stylizer;
 import thorium.web.models.Query;
 import thorium.web.repositories.QueryRepository;
 import thorium.web.repositories.RenderRepository;
@@ -49,6 +51,9 @@ public class IndexController {
         if(errors.hasErrors()){
             return "/?";
         }
+        Interpreter it = new Interpreter();
+        String s = it.untokenize(Stylizer.tokensToLatex(it.tokenize(query.getContent())));
+        query.setContent(s);
         qr.save(query);
         return "redirect:/";
     }

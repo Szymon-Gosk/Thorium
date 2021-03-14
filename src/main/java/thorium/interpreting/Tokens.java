@@ -1,5 +1,6 @@
 package thorium.interpreting;
 
+@Deprecated
 public interface Tokens {
 
     String GREEK_LOWERCASE = "(alpha)|(beta)|(gamma)|(delta)|(epsilon)|(zeta)|(eta)|(theta)|(iota)|(kappa)|(lambda)|" +

@@ -177,35 +177,4 @@ public class Interpreter {
         return s.replaceAll("\\s+","");
     }
 
-    /*
-        /pnl/ : (
-        /pnr/ : )
-        /cbl/ : {
-        /cbr/ : }
-    */
-    @Deprecated
-    public String toLatex(String s) {
-        String output = optimize(s);
-
-        // SIMPLE OPERATORS
-        output = output.replaceAll("\\*", "\\\\cdot ");
-
-        // LITERAL FUNCTIONS
-        output = output.replaceAll(Tokens.LITERAL_FUNCTIONS, "\\\\mathrm{cos} ");
-        // todo
-        output = output.replaceAll("\\{", "/cbl/").replaceAll("}", "/cbr/ ");
-
-        // PARENTHESES
-        output = output.replaceAll("\\(", "\\\\left( ").replaceAll("\\)", "\\\\right) ");
-        output = output.replaceAll("\\[", "\\\\left[ ").replaceAll("]", "\\\\right] ");
-        output = output.replaceAll("\\{", "\\\\left{ ").replaceAll("}", "\\\\right} ");
-        output = output.replaceAll("<", "\\\\langle ").replaceAll(">", "\\\\rangle ");
-        output = output.replaceAll("\\|\\|", "\\Vert" ).replaceAll("\\|", "\\\\vert ");
-
-        // TEMPORARY CODES REMOVAL
-        output = output.replaceAll("/cbl/", "{").replaceAll("/cbr/", "} ");
-
-        return output;
-    }
-
 }
