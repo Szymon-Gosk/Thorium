@@ -53,7 +53,7 @@ public class IndexController {
         }
         Interpreter it = new Interpreter();
         String s = it.untokenize(Stylizer.tokensToLatex(it.tokenize(query.getContent())));
-        query.setContent(s);
+        query.setContent(s + "\\\\");
         qr.save(query);
         return "redirect:/";
     }

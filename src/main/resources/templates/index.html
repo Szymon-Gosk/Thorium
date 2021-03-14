@@ -5,7 +5,7 @@
     <meta http-equiv="X-Ua-Compatible" content="IE=edge,chrome=1" />
     <title>Thorium</title>
     <!-- Put style here -->
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" th:href="@{/styles/index-style.css}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraph.css" />
     <script type="text/javascript" charset="UTF-8"
             src="https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraphcore.js"></script>
@@ -32,9 +32,15 @@
 </head>
 <body>
 
-    <form class="a" method="POST" th:action="@{/}" th:object="${query}">
-        <input class="a" type="text" name="q" placeholder="Input" aria-label="Input" th:field="*{content}">
-        <button class="a" type="submit" value="Submit" name="action">Calculate</button>
+<!--    <form class="a" method="POST" th:action="@{/}" th:object="${query}">-->
+<!--        <input class="a" type="text" name="q" placeholder="Input" aria-label="Input" th:field="*{content}">-->
+<!--        <button class="a" type="submit" value="Submit" name="action">Calculate</button>-->
+<!--    </form>-->
+
+    <form class="form__group field" method="POST" th:action="@{/}" th:object="${query}">
+        <input type="text" class="form__field" placeholder="Name" name="name" id='name' required th:field="*{content}"/>
+        <label for="name" class="form__label">Expression</label>
+        <button class="form__submit" type="submit" value="Submit" name="action">Calculate</button>
     </form>
 
     <div th:each="query : ${queries}">
