@@ -1,0 +1,105 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    background-color: #222222;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    width: 20vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.menu__logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+}
+
+.logo {
+    width: 64px;
+    height: 64px;
+    background-image: url("../../img/Thorium-logo.png");
+    background-size: 64px;
+    background-attachment: local;
+    background-repeat: no-repeat;
+}
+
+.name--T {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    background: -webkit-linear-gradient(#38ef7d, #11998e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 190%;
+}
+
+.separator__menu {
+    width: 94%;
+    height: 0.1vh;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 75%;
+    font-family: 'Consolas', sans-serif;
+}
+
+.nav__opt {
+    margin-top: 6vh;
+}
+
+.nav__text {
+    text-decoration: none;
+    color: #9b9b9b;
+    transition: 0.5s;
+}
+
+.nt__1:hover {color: #38ef7d;}
+.nt__2:hover {color: #32df82;}
+.nt__3:hover {color: #2acb87;}
+.nt__4:hover {color: #20b58b;}
+.nt__5:hover {color: #11998e;}
+
+.nav__active {
+    color: #38ef7d;
+}
+
+.separator__general {
+    background: #9b9b9b;
+}
+
+.separator__main {
+    height: 94vh;
+    width: 0.1vw;
+}
+
+.main {
+    width: 79.9vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.target {
+    color: #e2e2e2;
+}

@@ -27,13 +27,15 @@ public class LatexLibrary {
     @Contract(pure = true)
     private LatexLibrary() {
         styles = new HashMap<>();
-        styles.put("(", "\\left( "); styles.put("[", "\\left( "); styles.put("{", "\\left{ ");
-        styles.put(")", "\\right) "); styles.put("]", "\\right] "); styles.put("}", "\\right} ");
+        styles.put("(", "\\left( "); styles.put("[", "\\left[ "); styles.put("{", "\\lbrace ");
+        styles.put(")", "\\right) "); styles.put("]", "\\right] "); styles.put("}", "\\rbrace ");
         styles.put("<", "\\langle "); styles.put(">", "\\rangle ");
         styles.put("\\|\\|", "\\Vert" ); styles.put("\\|", "\\vert ");
         styles.put("*", "\\cdot ");
         styles.put("log", "\\mathrm{log} "); styles.put("exp", "\\mathrm{exp} ");
         styles.put("ln", "\\mathrm{ln} "); styles.put("lg", "\\mathrm{lg} ");
+
+        styles.put("in", "\\in" );
     }
 
 }
