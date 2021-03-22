@@ -90,6 +90,16 @@ public class Interpreter {
         return sb.toString();
     }
 
+    public boolean validate(@NotNull String[] t) {
+
+        return false;
+    }
+
+    /**
+     * Converts array of tokens in infix notation to array of token is RP notation
+     * @param tokens array of tokens in infix notation
+     * @return array of token is RP notation
+     */
     public Queue<String> infixToRPN(String @NotNull [] tokens) {
         Queue<String> Q = new LinkedList<>();
         Stack<String> S = new Stack<>();
@@ -167,11 +177,21 @@ public class Interpreter {
         return Q;
     }
 
+    /**
+     * Checks if a given string is a number (including complex numbers)
+     * @param str any string
+     * @return <b>true</b> if given string is a number; <b>false</b> otherwise
+     */
     @Contract(pure = true)
     static boolean isNumber(@NotNull String str) {
         return str.matches("([0-9]+(.[0-9]+)?i?|i[0-9]+(.[0-9]+)?|i)");
     }
 
+    /**
+     * Removes unnecessary characters from a string for further processing
+     * @param s any string
+     * @return optimized version of this string
+     */
     @Contract(pure = true)
     private @NotNull String optimize(@NotNull String s) {
         return s.replaceAll("\\s+","");
