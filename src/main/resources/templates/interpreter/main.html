@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-Ua-Compatible" content="IE=edge,chrome=1" />
-    <title>Thorium</title>
+    <title>Thorium | Interpreter</title>
     <!-- Put style here -->
     <link rel="stylesheet" th:href="@{/styles/index/base-style.css}">
     <link rel="stylesheet" th:href="@{/styles/index/searchbar-style.css}">
@@ -35,48 +35,48 @@
 </head>
 <body>
 
-    <!-- @menu -->
-    <div class="menu">
-        <div class="menu__logo">
-            <div class="logo"></div>
-            <span class="name--T">horium</span>
-        </div>
-        <div class="separator__general separator__menu">
-        </div>
-        <nav class="nav">
-            <div class="nav__opt">
-                <a class="nav__text nt__1 nav__active" th:href="@{/interpreter}">Interpreter</a>
-            </div>
-            <div class="nav__opt">
-                <a class="nav__text nt__2" th:href="@{/console}">Console</a>
-            </div>
-            <div class="nav__opt">
-                <a class="nav__text nt__3" th:href="@{/predefined}">Predefined builds</a>
-            </div>
-            <div class="nav__opt">
-                <a class="nav__text nt__4" th:href="@{/latex}">Latex panel</a>
-            </div>
-            <div class="nav__opt">
-                <a class="nav__text nt__5" th:href="@{/documentation}">Documentation</a>
-            </div>
-        </nav>
+<!-- @menu -->
+<div class="menu">
+    <div class="menu__logo">
+        <div class="logo"></div>
+        <span class="name--T">horium</span>
     </div>
-
-    <!-- @separator -->
-    <div class="separator__general separator__main"></div>
-
-    <!-- @main -->
-    <main class="main">
-        <form class="form__group field" method="POST" th:action="@{/}" th:object="${query}">
-            <input type="text" class="form__field" placeholder="Name" name="name" id='name' required th:field="*{content}"/>
-            <label for="name" class="form__label">Expression</label>
-            <button class="form__submit" type="submit" value="Submit" name="action">Calculate</button>
-        </form>
-
-        <div th:each="query : ${queries}">
-            <span class="toRender target" th:text="${query.content}"></span>
+    <div class="separator__general separator__menu">
+    </div>
+    <nav class="nav">
+        <div class="nav__opt">
+            <a class="nav__text nt__1 nav__active" th:href="@{/interpreter}">Interpreter</a>
         </div>
-    </main>
+        <div class="nav__opt">
+            <a class="nav__text nt__2" th:href="@{/console}">Console</a>
+        </div>
+        <div class="nav__opt">
+            <a class="nav__text nt__3" th:href="@{/predefined}">Predefined builds</a>
+        </div>
+        <div class="nav__opt">
+            <a class="nav__text nt__4" th:href="@{/latex}">Latex panel</a>
+        </div>
+        <div class="nav__opt">
+            <a class="nav__text nt__5" th:href="@{/documentation}">Documentation</a>
+        </div>
+    </nav>
+</div>
+
+<!-- @separator -->
+<div class="separator__general separator__main"></div>
+
+<!-- @main -->
+<main class="main">
+    <form class="form__group field" method="POST" th:action="@{/}" th:object="${query}">
+        <input type="text" class="form__field" placeholder="Name" name="name" id='name' required th:field="*{content}"/>
+        <label for="name" class="form__label">Expression</label>
+        <button class="form__submit" type="submit" value="Submit" name="action">Calculate</button>
+    </form>
+
+    <div th:each="query : ${queries}">
+        <span class="toRender target" th:text="${query.content}"></span>
+    </div>
+</main>
 
 </body>
 </html>

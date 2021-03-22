@@ -37,7 +37,6 @@ public class CSVImporter {
         }
         int i = 0;
         for(List<String> record: records) {
-            System.out.println(record.get(1));
             repository.save(new Render(i, record.get(0), record.get(1)));
             i++;
         }
