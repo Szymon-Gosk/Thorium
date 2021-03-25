@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'thorium'
-version = 'DEV.1.0.0'
+version = 'DEV.1.5.4'
 
 configurations {
     compileOnly {
@@ -74,4 +74,5 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    maxHeapSize = '2G'
 }
