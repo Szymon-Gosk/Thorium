@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-Ua-Compatible" content="IE=edge,chrome=1" />
+    <title>Thorium</title>
+    <!-- Put style here -->
+    <link rel="stylesheet" th:href="@{/styles/index/base-style.css}">
+    <link rel="stylesheet" th:href="@{/styles/index/searchbar-style.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraph.css" />
+    <script type="text/javascript" charset="UTF-8"
+            src="https://cdn.jsdelivr.net/npm/jsxgraph@1.1.0/distrib/jsxgraphcore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+          integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
+            integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
+            crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+            integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+
+    <script async defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <!-- Put scripts here -->
+    <script type="application/javascript" th:src="@{/javascript/render-katex.js}"></script>
+    <script src="https://kit.fontawesome.com/f6b215a682.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- @menu -->
+    <div class="menu">
+        <div class="menu__logo">
+            <div class="logo"></div>
+            <span class="name--T">horium</span>
+        </div>
+        <div class="separator__general separator__menu">
+        </div>
+        <nav class="nav">
+            <div class="nav__opt">
+                <a class="nav__text nt__1 nav__active" th:href="@{/interpreter}">Interpreter</a>
+            </div>
+            <div class="nav__opt">
+                <a class="nav__text nt__2" th:href="@{/console}">Console</a>
+            </div>
+            <div class="nav__opt">
+                <a class="nav__text nt__3" th:href="@{/predefined}">Predefined builds</a>
+            </div>
+            <div class="nav__opt">
+                <a class="nav__text nt__4" th:href="@{/latex}">Latex panel</a>
+            </div>
+            <div class="nav__opt">
+                <a class="nav__text nt__5" th:href="@{/documentation}">Documentation</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- @separator -->
+    <div class="separator__general separator__main"></div>
+
+    <!-- @main -->
+    <main class="main">
+        <form class="form__group field" method="POST" th:action="@{/}" th:object="${query}">
+            <input type="text" class="form__field" placeholder="Name" name="name" id='name' required th:field="*{content}"/>
+            <label for="name" class="form__label">Expression</label>
+            <button class="form__submit" type="submit" value="Submit" name="action">Calculate</button>
+        </form>
+
+        <div th:each="query : ${queries}">
+            <span class="toRender target" th:text="${query.content}"></span>
+        </div>
+    </main>
+
+</body>
+</html>

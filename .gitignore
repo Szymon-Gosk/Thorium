@@ -4,3 +4,6 @@ build
 .gradle
 Test.*
 test_cases
+dist
+node_modules
+out-tsc
