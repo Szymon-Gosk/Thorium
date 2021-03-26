@@ -18,43 +18,62 @@ repositories {
 dependencies {
 
     compile(
-            'com.opencsv:opencsv:5.3'
-            ,'com.thoughtworks.xstream:xstream:1.4.8'
-            ,'org.springframework.boot:spring-boot-starter-thymeleaf'
-            ,'org.jetbrains:annotations:16.0.2'
-            ,'org.apache.logging.log4j:log4j-api:2.14.0'
-            ,'org.apache.logging.log4j:log4j-core:2.14.0'
+            'org.jetbrains:annotations:16.0.2'
+
             ,'org.springframework.boot:spring-boot-starter-tomcat:1.2.1.RELEASE'
             ,'org.springframework.data:spring-data-jpa:2.4.2'
-            ,'javax.persistence:javax.persistence-api:2.2'
-            ,'org.postgresql:postgresql:42.2.5'
             ,'org.springframework.boot:spring-boot-starter-actuator:2.3.4.RELEASE'
             ,'org.springframework.boot:spring-boot-starter-data-jpa:2.0.2.RELEASE'
+            ,'org.springframework.boot:spring-boot-starter-mail:1.2.0.RELEASE'
+            ,'org.springframework.boot:spring-boot-starter-thymeleaf'
+         // ,'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
+
+            ,'org.apache.tomcat.embed:tomcat-embed-jasper:10.0.0'
+
+            ,'org.postgresql:postgresql:42.2.5'
+
+            ,'javax.persistence:javax.persistence-api:2.2'
             ,'javax.servlet:jstl:1.2'
+            ,'javax.validation:validation-api:2.0.1.Final'
+            ,'org.hibernate:hibernate-core:5.4.30.Final'
+
+            ,'com.opencsv:opencsv:5.3'
+            ,'com.thoughtworks.xstream:xstream:1.4.8'
+            ,'org.dom4j:dom4j:2.1.0'
+            ,'xalan:xalan:2.7.1'
+            ,'xerces:xercesImpl:2.8.0'
+            ,'cglib:cglib:2.2.2'
+
+            ,'org.apache.logging.log4j:log4j-api:2.14.0'
+            ,'org.apache.logging.log4j:log4j-core:2.14.0'
+            ,'org.slf4j:slf4j-api:1.7.25'
+
             ,'org.webjars:bootstrap:4.1.0'
             ,'org.webjars:jquery:3.3.1'
-            ,'org.apache.tomcat.embed:tomcat-embed-jasper:10.0.0'
-//          ,'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
-            ,'javax.validation:validation-api:2.0.1.Final'
-            ,'org.springframework.boot:spring-boot-starter-mail:1.2.0.RELEASE'
     )
 
     compileOnly 'org.projectlombok:lombok'
 
     implementation(
-            'org.springframework.boot:spring-boot-starter'
+            'org.scala-lang:scala-library:2.11.12'
+
+            ,'org.springframework.boot:spring-boot-starter'
             ,'org.springframework.boot:spring-boot-starter-thymeleaf'
             ,'org.springframework.boot:spring-boot-starter-web'
-            ,'org.hibernate.validator:hibernate-validator:6.1.2.Final'
-//          ,'org.springframework.boot:spring-boot-starter-security'
-//          ,'org.springframework.security:spring-security-test'
             ,'org.springframework.boot:spring-boot-starter-validation'
-            ,'org.scala-lang:scala-library:2.11.12'
+         // ,'org.springframework.boot:spring-boot-starter-security'
+         // ,'org.springframework.security:spring-security-test'
+
+            ,'org.hibernate.validator:hibernate-validator:6.1.2.Final'
     )
 
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    developmentOnly (
+            'org.springframework.boot:spring-boot-devtools'
+    )
 
-    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor (
+            'org.projectlombok:lombok'
+    )
 
     testImplementation (
             'org.springframework.boot:spring-boot-starter-test'
