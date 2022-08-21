@@ -1,0 +1,28 @@
+testSets {
+    integrationTest { dirName = 'integration-test' }
+    functionalTest { dirName = 'functional-test' }
+    webdriverTest { dirName = 'webdriver-test' }
+}
+
+integrationTest {
+    mustRunAfter test
+}
+check.dependsOn integrationTest
+
+functionalTest {
+    mustRunAfter integrationTest
+}
+check.dependsOn functionalTest
+
+webdriverTest {
+    mustRunAfter functionalTest
+}
+check.dependsOn webdriverTest
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+
+    systemProperty 'spock.logEnabled', 'true'
+    systemProperty 'spock.logFileDir', './build/test-results/test'
+    systemProperty 'spock.logFileName', 'spock-report'
+}
