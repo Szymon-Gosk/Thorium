@@ -1,4 +1,4 @@
-package gosk.szymon.model;
+package gosk.szymon.model.common;
 
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
