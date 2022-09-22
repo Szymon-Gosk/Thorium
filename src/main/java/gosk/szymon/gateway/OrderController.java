@@ -2,14 +2,13 @@ package gosk.szymon.gateway;
 
 import gosk.szymon.dev.DevOnly;
 import gosk.szymon.dev.DevTools;
-import gosk.szymon.model.MealOrder;
-import gosk.szymon.model.common.EducationLevel;
-import gosk.szymon.model.common.EducationType;
+import gosk.szymon.model.OrderBatchDTO;
 import gosk.szymon.model.common.Recipient;
 import gosk.szymon.processing.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,22 +32,20 @@ public class OrderController {
 
     @PostMapping(value="/place-order", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Object> createOrder(@RequestBody List<MealOrder> mealOrders) {
-        return orderService.createOrder(mealOrders);
+    public ResponseEntity<String> createOrder(@RequestBody OrderBatchDTO orderBatch) {
+        return orderService.createOrder(orderBatch);
     }
 
     @DevOnly
     @PostMapping(value="/dev/post-recipients", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Object> createRecipients(@RequestBody List<Recipient> recipients) {
+    public ResponseEntity<String> createRecipients(@RequestBody List<Recipient> recipients) {
         return devTools.createRecipients(recipients);
     }
 
-    @DevOnly
-    @PostMapping(value="/dev/post-education-levels", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<Object> createEducationLevels(@RequestBody List<EducationLevel> educationLevels) {
-        return devTools.createEducationLevels(educationLevels);
+    @GetMapping(value = "/dev/get-orders")
+    public ResponseEntity<String> getOrders() {
+        return devTools.getOrders();
     }
 
 }

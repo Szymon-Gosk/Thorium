@@ -1,0 +1,39 @@
+###
+POST http://localhost:8080/place-order
+Content-Type: application/json
+
+{
+  "recipient": {
+    "id": 1,
+    "name": "Jan",
+    "surname": "Kowalski",
+    "educationType": "HIGH_SCHOOL",
+    "educationLevel": "A2"
+  },
+  "orders": [
+    {
+      "date": [
+        2022,
+        9,
+        12
+      ],
+      "mealType": "NORMAL"
+    },
+    {
+      "date": [
+        2022,
+        9,
+        13
+      ],
+      "mealType": "VEGETARIAN"
+    },
+    {
+      "date": [
+        2022,
+        9,
+        14
+      ],
+      "mealType": "NORMAL"
+    }
+  ]
+}

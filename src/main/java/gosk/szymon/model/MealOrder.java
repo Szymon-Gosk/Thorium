@@ -55,14 +55,8 @@ public class MealOrder implements Serializable {
     private MealType mealType;
 
     @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "RecipientId",nullable = false)
+    @JoinColumn(name = "RecipientId", nullable = false)
     private Recipient recipient;
-
-    public MealOrder(LocalDate localDate, MealType mealType, Recipient recipient) {
-        this.date = localDate;
-        this.mealType = mealType;
-        this.recipient = recipient;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,7 +1,13 @@
 package gosk.szymon.dev;
 
-import gosk.szymon.model.common.EducationLevel;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import gosk.szymon.model.MealOrder;
 import gosk.szymon.model.common.Recipient;
+import gosk.szymon.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,18 +20,20 @@ import java.util.List;
 public final class DevTools {
 
     private final RecipientRepository recipientRepository;
-    private final EducationLevelRepository educationLevelRepository;
+    private final OrderRepository orderRepository;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
-    public DevTools(RecipientRepository recipientRepository, EducationLevelRepository educationLevelRepository) {
+    public DevTools(RecipientRepository recipientRepository, OrderRepository orderRepository) {
         this.recipientRepository = recipientRepository;
-        this.educationLevelRepository = educationLevelRepository;
+        this.orderRepository = orderRepository;
     }
 
-    public ResponseEntity<Object> createRecipients(List<Recipient> recipients) {
+    public ResponseEntity<String> createRecipients(List<Recipient> recipients) {
         try {
             recipientRepository.saveAll(recipients);
-            return ResponseEntity.ok().build();
+            return ResponseEntity
+                    .ok("Recipients created");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity
@@ -34,17 +42,27 @@ public final class DevTools {
         }
     }
 
-    public ResponseEntity<Object> createEducationLevels(List<EducationLevel> educationLevels) {
+    public ResponseEntity<String> getOrders() {
         try {
-            educationLevelRepository.saveAll(educationLevels);
-            return ResponseEntity.ok().build();
+            List<MealOrder> orders = orderRepository.findAll();
+            return ResponseEntity
+                    .ok(parseOrdersToJson(orders));
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error creating education levels: " + e.getMessage());
+                    .body("Could not get orders");
         }
     }
 
+    private String parseOrdersToJson(List<MealOrder> orders) throws JsonProcessingException {
+        objectMapper.findAndRegisterModules();
+        String jsonOrder = objectMapper.writeValueAsString(orders);
+        JsonElement jsonElement = JsonParser.parseString(jsonOrder);
+        return new GsonBuilder()
+                .setPrettyPrinting()
+                .create()
+                .toJson(jsonElement);
+    }
 
 }

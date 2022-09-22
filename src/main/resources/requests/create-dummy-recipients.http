@@ -1,0 +1,20 @@
+###
+POST http://localhost:8080/dev/post-recipients
+Content-Type: application/json
+
+[
+  {
+    "id": 1,
+    "name": "Jan",
+    "surname": "Kowalski",
+    "educationType": "HIGH_SCHOOL",
+    "educationLevel": "A2"
+  },
+  {
+    "id": 2,
+    "name": "Igor",
+    "surname": "Nowak",
+    "educationType": "TEACHER",
+    "educationLevel": "NONE"
+  }
+]

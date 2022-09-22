@@ -1,6 +1,5 @@
 package gosk.szymon.model.common;
 
-import gosk.szymon.model.MealOrder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,16 +8,11 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
@@ -35,7 +29,6 @@ public class Recipient implements Serializable {
 
     @Id
     @Column(name = "RecipientId", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "Name", nullable = false)
@@ -51,8 +44,8 @@ public class Recipient implements Serializable {
     @Column(name = "EducationType", nullable = false)
     private EducationType educationType;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "EducationLevelId",nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "EducationLevel", nullable = false)
     private EducationLevel educationLevel;
 
     @Override
