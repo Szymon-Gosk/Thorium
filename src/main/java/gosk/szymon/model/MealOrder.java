@@ -1,6 +1,7 @@
-package gosk.szymon.model.common;
+package gosk.szymon.model;
 
-import gosk.szymon.model.MealOrder;
+import gosk.szymon.model.common.MealType;
+import gosk.szymon.model.common.Recipient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,52 +22,59 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
 @Getter
 @Setter
-@Builder
 @ToString
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Recipient")
-public class Recipient implements Serializable {
+@Table(name = "MealOrder")
+public class MealOrder implements Serializable {
 
     @Id
-    @Column(name = "RecipientId", nullable = false)
+    @Column(name = "OrderID", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "Name", nullable = false)
-    private String name;
+    @Column(name = "Uuid", nullable = false)
+    private UUID uuid = UUID.randomUUID();
 
-    @Column(name = "SecondName")
-    private String secondName;
+    @Column(name = "IsConfirmed", nullable = false)
+    private boolean isConfirmed = false;
 
-    @Column(name = "Surname", nullable = false)
-    private String surname;
+    @Column(name = "Date", nullable = false, columnDefinition = "DATE")
+    private LocalDate date;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "EducationType", nullable = false)
-    private EducationType educationType;
+    @Column(name = "MealType", nullable = false)
+    private MealType mealType;
 
     @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "EducationLevelId",nullable = false)
-    private EducationLevel educationLevel;
+    @JoinColumn(name = "RecipientId",nullable = false)
+    private Recipient recipient;
+
+    public MealOrder(LocalDate localDate, MealType mealType, Recipient recipient) {
+        this.date = localDate;
+        this.mealType = mealType;
+        this.recipient = recipient;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Recipient recipient = (Recipient) o;
-        return id != null && Objects.equals(id, recipient.id);
+        MealOrder mealOrder = (MealOrder) o;
+        return id != null && Objects.equals(id, mealOrder.id);
     }
 
     @Override
     public int hashCode() {
         return getClass().hashCode();
     }
-
 
 }

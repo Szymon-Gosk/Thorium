@@ -2,7 +2,9 @@ package gosk.szymon.model.common;
 
 import lombok.Getter;
 
-public enum RecipientType {
+import java.io.Serializable;
+
+public enum EducationType implements Serializable {
 
     JUNIOR_HIGH_SCHOOL("gimnazjum"),
     HIGH_SCHOOL("liceum"),
@@ -11,7 +13,7 @@ public enum RecipientType {
     @Getter
     private final String verbose;
 
-    RecipientType(String verbose) {
+    EducationType(String verbose) {
         this.verbose = verbose;
     }
 
