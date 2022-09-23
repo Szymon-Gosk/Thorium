@@ -1,16 +1,59 @@
+server:
+  port: 8080
+
 spring:
+
+  rabbitmq:
+    port: 5672
+    username: guest
+    password: guest
+    host: localhost
+
+  cloud:
+    stream:
+      function:
+        bindings:
+          testFunction-in-0: input1
+          testFunction-out-0: output1
+      bindings:
+        input1:
+          group: thorium-core-input-queue.local
+        output1:
+          destination: thorium-core-output-queue
+      rabbit:
+        bindings:
+          input1:
+            consumer:
+              exchange-type: direct
+              declare-exchange: false
+              bind-queue: false
+              queue-name-group-only: true
+          output1:
+            producer:
+              exchange-type: direct
+              declare-exchange: false
+              bind-queue: false
+              routing-key-expression: '''#'''
+    function:
+      definition: testFunction
+
+  groovy:
+    template:
+      check-template-location: false
+
   jpa:
     database: POSTGRESQL
     show-sql: true
+    open-in-view: false
     hibernate:
       ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
   datasource:
-    url: jdbc:postgresql://localhost:5433/thorium-db
+    url: jdbc:postgresql://host.docker.internal:49153/thorium-db
     username: postgres
-    password: postgres
+    password: postgrespw
     driverClassName: org.postgresql.Driver
   sql:
     init:

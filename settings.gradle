@@ -1,2 +1,4 @@
 rootProject.name = 'Thorium'
+include 'thorium-client'
+include 'thorium-admin'
 

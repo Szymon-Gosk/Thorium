@@ -1,0 +1,6 @@
+spring:
+  groovy:
+    template:
+      check-template-location: true
+server:
+  port: 8081
