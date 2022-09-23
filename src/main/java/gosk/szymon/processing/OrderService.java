@@ -1,14 +1,15 @@
 package gosk.szymon.processing;
 
+import gosk.szymon.dev.DevTools;
 import gosk.szymon.dev.RecipientRepository;
+import gosk.szymon.events.EventType;
+import gosk.szymon.events.ThoriumEvent;
 import gosk.szymon.model.MealOrder;
 import gosk.szymon.model.OrderBatchDTO;
 import gosk.szymon.model.common.Recipient;
 import gosk.szymon.repositories.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -18,23 +19,27 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final RecipientRepository recipientRepository;
 
+    private final DevTools devTools;
+
     @Autowired
-    public OrderService(OrderRepository orderRepository, RecipientRepository recipientRepository) {
+    public OrderService(OrderRepository orderRepository, RecipientRepository recipientRepository, DevTools devTools) {
         this.orderRepository = orderRepository;
         this.recipientRepository = recipientRepository;
+        this.devTools = devTools;
     }
 
-    public ResponseEntity<String> createOrder(OrderBatchDTO orderBatch) {
+    public ThoriumEvent<String> createOrder(OrderBatchDTO orderBatch) {
         try {
             Recipient recipient = findRecipientFrom(orderBatch);
             orderBatch.orders().forEach(order -> saveOrder(order, recipient));
-            return ResponseEntity
-                    .ok("Orders saved");
+            return devTools.getOrders();
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Internal server error");
+            return ThoriumEvent
+                    .<String>builder()
+                    .eventType(EventType.FAILED_TO_SAVE_ORDER_BATCH)
+                    .payload("Failed to save orders: " + e.getMessage())
+                    .build();
         }
     }
 

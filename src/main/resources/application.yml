@@ -13,8 +13,8 @@ spring:
     stream:
       function:
         bindings:
-          testFunction-in-0: input1
-          testFunction-out-0: output1
+          thoriumFunction-in-0: input1
+          thoriumFunction-out-0: output1
       bindings:
         input1:
           group: thorium-core-input-queue.local
@@ -35,7 +35,7 @@ spring:
               bind-queue: false
               routing-key-expression: '''#'''
     function:
-      definition: testFunction
+      definition: thoriumFunction
 
   groovy:
     template:

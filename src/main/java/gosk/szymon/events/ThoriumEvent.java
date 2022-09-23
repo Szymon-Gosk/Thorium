@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ThoriumCoreEvent implements Event<String> {
+public class ThoriumEvent<T> implements Event<T> {
 
     private EventType eventType;
-    private String payload;
+    private T payload;
 
 }

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import gosk.szymon.events.EventType;
+import gosk.szymon.events.ThoriumEvent;
 import gosk.szymon.model.MealOrder;
 import gosk.szymon.model.common.Recipient;
 import gosk.szymon.repositories.OrderRepository;
@@ -42,16 +44,21 @@ public final class DevTools {
         }
     }
 
-    public ResponseEntity<String> getOrders() {
+    public ThoriumEvent<String> getOrders() {
         try {
             List<MealOrder> orders = orderRepository.findAll();
-            return ResponseEntity
-                    .ok(parseOrdersToJson(orders));
+            return ThoriumEvent
+                    .<String>builder()
+                    .eventType(EventType.SAVED_ORDERS_BATCH)
+                    .payload(parseOrdersToJson(orders))
+                    .build();
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Could not get orders");
+            return ThoriumEvent
+                    .<String>builder()
+                    .eventType(EventType.DEV)
+                    .payload("Could not get orders: " + e.getMessage())
+                    .build();
         }
     }
 

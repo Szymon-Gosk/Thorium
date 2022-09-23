@@ -15,6 +15,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -54,8 +55,8 @@ public class MealOrder implements Serializable {
     @Column(name = "MealType", nullable = false)
     private MealType mealType;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "RecipientId", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "RecipientId")
     private Recipient recipient;
 
     @Override
