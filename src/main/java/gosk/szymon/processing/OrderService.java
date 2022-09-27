@@ -1,7 +1,7 @@
 package gosk.szymon.processing;
 
 import gosk.szymon.dev.DevTools;
-import gosk.szymon.dev.PersonRepository;
+import gosk.szymon.repositories.PersonRepository;
 import gosk.szymon.model.order.Order;
 import gosk.szymon.model.order.OrderBatchDTO;
 import gosk.szymon.model.user.Person;

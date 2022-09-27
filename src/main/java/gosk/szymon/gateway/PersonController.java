@@ -1,9 +1,8 @@
 package gosk.szymon.gateway;
 
 import gosk.szymon.dev.DevOnly;
-import gosk.szymon.dev.DevTools;
-import gosk.szymon.model.order.OrderBatchDTO;
-import gosk.szymon.processing.OrderService;
+import gosk.szymon.model.user.Person;
+import gosk.szymon.processing.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,20 +11,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class OrderController {
+import java.util.List;
 
-    private final OrderService orderService;
+@DevOnly
+@RestController
+public class PersonController {
+
+    private final PersonService personService;
 
     @Autowired
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
+    public PersonController(PersonService personService) {
+        this.personService = personService;
     }
 
-    @PostMapping(value="/place-order", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value="/dev/post-people", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<String> createOrder(@RequestBody OrderBatchDTO orderBatch) {
-        return orderService.createOrder(orderBatch);
+    public ResponseEntity<String> createPersons(@RequestBody List<Person> people) {
+        return personService.createPersons(people);
     }
 
 }

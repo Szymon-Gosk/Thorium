@@ -19,27 +19,12 @@ import java.util.List;
 @Component
 public final class DevTools {
 
-    private final PersonRepository personRepository;
     private final OrderRepository orderRepository;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
-    public DevTools(PersonRepository personRepository, OrderRepository orderRepository) {
-        this.personRepository = personRepository;
+    public DevTools(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
-    }
-
-    public ResponseEntity<String> createPersons(List<Person> people) {
-        try {
-            personRepository.saveAll(people);
-            return ResponseEntity
-                    .ok("Persons created");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error creating persons: " + e.getMessage());
-        }
     }
 
     public ResponseEntity<String> getOrders() {
