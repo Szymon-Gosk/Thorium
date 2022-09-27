@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import gosk.szymon.model.order.MealOrder;
-import gosk.szymon.model.user.Recipient;
+import gosk.szymon.model.order.Order;
+import gosk.szymon.model.user.Person;
 import gosk.szymon.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,32 +19,32 @@ import java.util.List;
 @Component
 public final class DevTools {
 
-    private final RecipientRepository recipientRepository;
+    private final PersonRepository personRepository;
     private final OrderRepository orderRepository;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
-    public DevTools(RecipientRepository recipientRepository, OrderRepository orderRepository) {
-        this.recipientRepository = recipientRepository;
+    public DevTools(PersonRepository personRepository, OrderRepository orderRepository) {
+        this.personRepository = personRepository;
         this.orderRepository = orderRepository;
     }
 
-    public ResponseEntity<String> createRecipients(List<Recipient> recipients) {
+    public ResponseEntity<String> createPersons(List<Person> people) {
         try {
-            recipientRepository.saveAll(recipients);
+            personRepository.saveAll(people);
             return ResponseEntity
-                    .ok("Recipients created");
+                    .ok("Persons created");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error creating recipients: " + e.getMessage());
+                    .body("Error creating persons: " + e.getMessage());
         }
     }
 
     public ResponseEntity<String> getOrders() {
         try {
-            List<MealOrder> orders = orderRepository.findAll();
+            List<Order> orders = orderRepository.findAll();
             return ResponseEntity.ok(parseOrdersToJson(orders));
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,7 +54,7 @@ public final class DevTools {
         }
     }
 
-    private String parseOrdersToJson(List<MealOrder> orders) throws JsonProcessingException {
+    private String parseOrdersToJson(List<Order> orders) throws JsonProcessingException {
         objectMapper.findAndRegisterModules();
         String jsonOrder = objectMapper.writeValueAsString(orders);
         JsonElement jsonElement = JsonParser.parseString(jsonOrder);

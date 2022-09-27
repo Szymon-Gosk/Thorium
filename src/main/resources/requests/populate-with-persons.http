@@ -1,0 +1,96 @@
+###
+POST http://localhost:8080/dev/post-people
+Content-Type: application/json
+
+[
+  {
+    "id": 1,
+    "code": "JKA11",
+    "name": "Jan",
+    "surname": "Kowalski",
+    "educationType": "JUNIOR_HIGH_SCHOOL",
+    "educationLevel": "A1"
+  },
+  {
+    "id": 2,
+    "code": "INB11",
+    "name": "Igor",
+    "surname": "Nowak",
+    "educationType": "JUNIOR_HIGH_SCHOOL",
+    "educationLevel": "B1"
+  },
+  {
+    "id": 3,
+    "code": "AWA21",
+    "name": "Anna",
+    "surname": "Wiśniewska",
+    "educationType": "JUNIOR_HIGH_SCHOOL",
+    "educationLevel": "A2"
+  },
+  {
+    "id": 4,
+    "code": "GWB21",
+    "name": "Grzegorz",
+    "surname": "Wójcik",
+    "educationType": "JUNIOR_HIGH_SCHOOL",
+    "educationLevel": "B2"
+  },
+  {
+    "id": 5,
+    "code": "IKA31",
+    "name": "Iga",
+    "surname": "Kowalczyk",
+    "secondName": "Aleksandra",
+    "educationType": "JUNIOR_HIGH_SCHOOL",
+    "educationLevel": "A3"
+  },
+  {
+    "id": 6,
+    "code": "IKB31",
+    "name": "Izabela",
+    "surname": "Kamińska",
+    "educationType": "JUNIOR_HIGH_SCHOOL",
+    "educationLevel": "B3"
+  },
+  {
+    "id": 7,
+    "code": "ALA11",
+    "name": "Artur",
+    "surname": "Lewandowski",
+    "educationType": "HIGH_SCHOOL",
+    "educationLevel": "A1"
+  },
+  {
+    "id": 8,
+    "code": "ZZB21",
+    "name": "Zuzanna",
+    "surname": "Zielińska",
+    "educationType": "HIGH_SCHOOL",
+    "educationLevel": "B2"
+  },
+  {
+    "id": 9,
+    "code": "ZZB22",
+    "name": "Zuzanna",
+    "surname": "Zielińska",
+    "educationType": "HIGH_SCHOOL",
+    "educationLevel": "B2"
+  },
+  {
+    "id": 10,
+    "code": "OSTT1",
+    "name": "Oskar",
+    "secondName": "Artur",
+    "surname": "Szymański",
+    "educationType": "TEACHER",
+    "educationLevel": "NONE"
+  },
+  {
+    "id": 11,
+    "code": "AWTT1",
+    "name": "Adam",
+    "surname": "Woźniak",
+    "educationType": "TEACHER",
+    "educationLevel": "NONE"
+  }
+]

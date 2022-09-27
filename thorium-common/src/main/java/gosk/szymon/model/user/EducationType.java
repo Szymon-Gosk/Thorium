@@ -2,9 +2,7 @@ package gosk.szymon.model.user;
 
 import lombok.Getter;
 
-import java.io.Serializable;
-
-public enum EducationType implements Serializable {
+public enum EducationType {
 
     JUNIOR_HIGH_SCHOOL("gimnazjum"),
     HIGH_SCHOOL("liceum"),

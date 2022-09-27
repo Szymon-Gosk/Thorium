@@ -1,6 +1,6 @@
 package gosk.szymon.model.order;
 
-import gosk.szymon.model.user.Recipient;
+import gosk.szymon.model.user.Person;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,37 +31,37 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "MealOrder")
-public class MealOrder implements Serializable {
+@Table(name = "`Order`")
+public class Order implements Serializable {
 
     @Id
-    @Column(name = "OrderID", nullable = false)
+    @Column(name = "`OrderID`", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "Uuid", nullable = false)
+    @Column(name = "`Uuid`", nullable = false)
     private UUID uuid = UUID.randomUUID();
 
-    @Column(name = "IsConfirmed", nullable = false)
+    @Column(name = "`IsConfirmed`", nullable = false)
     private boolean isConfirmed = false;
 
-    @Column(name = "Date", nullable = false, columnDefinition = "DATE")
+    @Column(name = "`Date`", nullable = false, columnDefinition = "DATE")
     private LocalDate date;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "MealType", nullable = false)
+    @Column(name = "`MealType`", nullable = false)
     private MealType mealType;
 
     @ManyToOne
-    @JoinColumn(name = "RecipientId")
-    private Recipient recipient;
+    @JoinColumn(name = "`PersonId`")
+    private Person person;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        MealOrder mealOrder = (MealOrder) o;
-        return id != null && Objects.equals(id, mealOrder.id);
+        Order order = (Order) o;
+        return id != null && Objects.equals(id, order.id);
     }
 
     @Override

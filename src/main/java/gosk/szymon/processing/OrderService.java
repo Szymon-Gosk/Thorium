@@ -1,10 +1,10 @@
 package gosk.szymon.processing;
 
 import gosk.szymon.dev.DevTools;
-import gosk.szymon.dev.RecipientRepository;
-import gosk.szymon.model.order.MealOrder;
+import gosk.szymon.dev.PersonRepository;
+import gosk.szymon.model.order.Order;
 import gosk.szymon.model.order.OrderBatchDTO;
-import gosk.szymon.model.user.Recipient;
+import gosk.szymon.model.user.Person;
 import gosk.szymon.repositories.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,38 +17,38 @@ import org.springframework.stereotype.Service;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final RecipientRepository recipientRepository;
+    private final PersonRepository personRepository;
 
     private final DevTools devTools;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, RecipientRepository recipientRepository, DevTools devTools) {
+    public OrderService(OrderRepository orderRepository, PersonRepository personRepository, DevTools devTools) {
         this.orderRepository = orderRepository;
-        this.recipientRepository = recipientRepository;
+        this.personRepository = personRepository;
         this.devTools = devTools;
     }
 
     public ResponseEntity<String> createOrder(OrderBatchDTO orderBatch) {
         try {
-            Recipient recipient = findRecipientFrom(orderBatch);
-            orderBatch.orders().forEach(order -> saveOrder(order, recipient));
+            Person person = findPersonFrom(orderBatch);
+            orderBatch.orders().forEach(order -> saveOrder(order, person));
             return devTools.getOrders();
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error creating recipients: " + e.getMessage());
+                    .body("Error creating persons: " + e.getMessage());
         }
     }
 
-    private Recipient findRecipientFrom(OrderBatchDTO orderBatch) throws Exception {
-        return recipientRepository
-                .findById(orderBatch.recipient().getId())
+    private Person findPersonFrom(OrderBatchDTO orderBatch) throws Exception {
+        return personRepository
+                .findById(orderBatch.person().getId())
                 .orElseThrow(Exception::new);
     }
 
-    private void saveOrder(MealOrder order, Recipient recipient) {
-        order.setRecipient(recipient);
+    private void saveOrder(Order order, Person person) {
+        order.setPerson(person);
         orderRepository.save(order);
     }
 

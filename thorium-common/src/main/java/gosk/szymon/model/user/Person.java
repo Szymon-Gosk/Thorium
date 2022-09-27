@@ -24,36 +24,39 @@ import java.util.Objects;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "Recipient")
-public class Recipient implements Serializable {
+@Table(name = "`Person`")
+public class Person implements Serializable {
 
     @Id
-    @Column(name = "RecipientId", nullable = false)
+    @Column(name = "`PersonId`", nullable = false)
     private Long id;
 
-    @Column(name = "Name", nullable = false)
+    @Column(name = "`Code`", nullable = false)
+    private String code;
+
+    @Column(name = "`Name`", nullable = false)
     private String name;
 
-    @Column(name = "SecondName")
+    @Column(name = "`SecondName`")
     private String secondName;
 
-    @Column(name = "Surname", nullable = false)
+    @Column(name = "`Surname`", nullable = false)
     private String surname;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "EducationType", nullable = false)
+    @Column(name = "`EducationType`", nullable = false)
     private EducationType educationType;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "EducationLevel", nullable = false)
+    @Column(name = "`EducationLevel`", nullable = false)
     private EducationLevel educationLevel;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Recipient recipient = (Recipient) o;
-        return id != null && Objects.equals(id, recipient.id);
+        Person person = (Person) o;
+        return id != null && Objects.equals(id, person.id);
     }
 
     @Override

@@ -3,7 +3,7 @@ package gosk.szymon.gateway;
 import gosk.szymon.dev.DevOnly;
 import gosk.szymon.dev.DevTools;
 import gosk.szymon.model.order.OrderBatchDTO;
-import gosk.szymon.model.user.Recipient;
+import gosk.szymon.model.user.Person;
 import gosk.szymon.processing.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -35,10 +35,10 @@ public class OrderController {
     }
 
     @DevOnly
-    @PostMapping(value="/dev/post-recipients", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value="/dev/post-people", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<String> createRecipients(@RequestBody List<Recipient> recipients) {
-        return devTools.createRecipients(recipients);
+    public ResponseEntity<String> createPersons(@RequestBody List<Person> people) {
+        return devTools.createPersons(people);
     }
 
 }

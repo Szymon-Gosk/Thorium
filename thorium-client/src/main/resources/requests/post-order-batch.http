@@ -3,7 +3,7 @@ POST http://localhost:8081/place-order
 Content-Type: application/json
 
 {
-  "recipient": {
+  "person": {
     "id": 1,
     "name": "Jan",
     "surname": "Kowalski",
