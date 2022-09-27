@@ -1,7 +1,7 @@
 package gosk.szymon.gateway;
 
 import gosk.szymon.messaging.OrderSenderService;
-import gosk.szymon.model.OrderBatchDTO;
+import gosk.szymon.model.order.OrderBatchDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

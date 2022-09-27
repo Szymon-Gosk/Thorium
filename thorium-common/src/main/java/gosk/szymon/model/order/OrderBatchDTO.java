@@ -1,4 +1,6 @@
-package gosk.szymon.model;
+package gosk.szymon.model.order;
+
+import gosk.szymon.model.user.Recipient;
 
 import java.util.List;
 

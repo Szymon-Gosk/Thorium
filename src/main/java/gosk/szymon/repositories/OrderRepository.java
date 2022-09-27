@@ -1,6 +1,6 @@
 package gosk.szymon.repositories;
 
-import gosk.szymon.model.MealOrder;
+import gosk.szymon.model.order.MealOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

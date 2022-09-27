@@ -1,5 +1,6 @@
-package gosk.szymon.model;
+package gosk.szymon.model.order;
 
+import gosk.szymon.model.user.Recipient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

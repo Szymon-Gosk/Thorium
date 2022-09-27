@@ -1,6 +1,6 @@
 package gosk.szymon.messaging;
 
-import gosk.szymon.model.OrderBatchDTO;
+import gosk.szymon.model.order.OrderBatchDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.http.HttpStatus;

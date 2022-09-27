@@ -1,4 +1,4 @@
-package gosk.szymon.model;
+package gosk.szymon.model.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,9 +20,9 @@ import java.util.Objects;
 @Getter
 @Setter
 @Builder
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "Recipient")
 public class Recipient implements Serializable {

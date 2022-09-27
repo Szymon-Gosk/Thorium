@@ -1,7 +1,7 @@
 package gosk.szymon.bindings;
 
 import gosk.szymon.messaging.ThoriumEvent;
-import gosk.szymon.model.OrderBatchDTO;
+import gosk.szymon.model.order.OrderBatchDTO;
 import gosk.szymon.processing.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

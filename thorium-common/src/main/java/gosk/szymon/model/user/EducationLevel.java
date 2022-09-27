@@ -1,4 +1,4 @@
-package gosk.szymon.model;
+package gosk.szymon.model.user;
 
 import org.apache.commons.lang3.StringUtils;
 

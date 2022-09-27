@@ -2,8 +2,8 @@ package gosk.szymon.gateway;
 
 import gosk.szymon.dev.DevOnly;
 import gosk.szymon.dev.DevTools;
-import gosk.szymon.model.OrderBatchDTO;
-import gosk.szymon.model.Recipient;
+import gosk.szymon.model.order.OrderBatchDTO;
+import gosk.szymon.model.user.Recipient;
 import gosk.szymon.processing.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
