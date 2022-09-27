@@ -1,4 +1,4 @@
-package gosk.szymon.model.common;
+package gosk.szymon.model;
 
 import lombok.Getter;
 

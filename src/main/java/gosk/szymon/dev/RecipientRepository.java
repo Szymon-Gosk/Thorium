@@ -1,6 +1,6 @@
 package gosk.szymon.dev;
 
-import gosk.szymon.model.common.Recipient;
+import gosk.szymon.model.Recipient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

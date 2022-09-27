@@ -13,8 +13,8 @@ spring:
     stream:
       function:
         bindings:
-          thoriumFunction-in-0: input1
-          thoriumFunction-out-0: output1
+          createOrder-in-0: input1
+          createOrder-out-0: output1
       bindings:
         input1:
           group: thorium-core-input-queue.local
@@ -35,7 +35,7 @@ spring:
               bind-queue: false
               routing-key-expression: '''#'''
     function:
-      definition: thoriumFunction
+      definition: createOrder
 
   groovy:
     template:

@@ -1,4 +1,5 @@
 rootProject.name = 'Thorium'
 include 'thorium-client'
 include 'thorium-admin'
+include 'thorium-common'
 

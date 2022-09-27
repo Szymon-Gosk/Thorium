@@ -2,11 +2,11 @@ package gosk.szymon.processing;
 
 import gosk.szymon.dev.DevTools;
 import gosk.szymon.dev.RecipientRepository;
-import gosk.szymon.events.EventType;
-import gosk.szymon.events.ThoriumEvent;
+import gosk.szymon.messaging.EventType;
+import gosk.szymon.messaging.ThoriumEvent;
 import gosk.szymon.model.MealOrder;
 import gosk.szymon.model.OrderBatchDTO;
-import gosk.szymon.model.common.Recipient;
+import gosk.szymon.model.Recipient;
 import gosk.szymon.repositories.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
