@@ -2,32 +2,6 @@ server:
   port: 8081
 
 spring:
-
-  rabbitmq:
-    port: 5672
-    username: guest
-    password: guest
-    host: localhost
-
-  cloud:
-    stream:
-      function:
-        bindings:
-          postOrders-out-0: output1
-      bindings:
-        output1:
-          group: thorium-core-input-queue
-      rabbit:
-        bindings:
-          output1:
-            producer:
-              exchange-type: direct
-              declare-exchange: false
-              bind-queue: false
-              routing-key-expression: '''#'''
-    function:
-      definition: postOrders
-
   groovy:
     template:
-      check-template-location: false
+      check-template-location: true

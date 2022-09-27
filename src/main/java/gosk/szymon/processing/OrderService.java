@@ -2,14 +2,14 @@ package gosk.szymon.processing;
 
 import gosk.szymon.dev.DevTools;
 import gosk.szymon.dev.RecipientRepository;
-import gosk.szymon.messaging.EventType;
-import gosk.szymon.messaging.ThoriumEvent;
 import gosk.szymon.model.order.MealOrder;
 import gosk.szymon.model.order.OrderBatchDTO;
 import gosk.szymon.model.user.Recipient;
 import gosk.szymon.repositories.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -28,18 +28,16 @@ public class OrderService {
         this.devTools = devTools;
     }
 
-    public ThoriumEvent<String> createOrder(OrderBatchDTO orderBatch) {
+    public ResponseEntity<String> createOrder(OrderBatchDTO orderBatch) {
         try {
             Recipient recipient = findRecipientFrom(orderBatch);
             orderBatch.orders().forEach(order -> saveOrder(order, recipient));
             return devTools.getOrders();
         } catch (Exception e) {
             e.printStackTrace();
-            return ThoriumEvent
-                    .<String>builder()
-                    .eventType(EventType.FAILED_TO_SAVE_ORDER_BATCH)
-                    .payload("Failed to save orders: " + e.getMessage())
-                    .build();
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error creating recipients: " + e.getMessage());
         }
     }
 

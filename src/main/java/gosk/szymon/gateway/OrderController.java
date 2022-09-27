@@ -31,7 +31,7 @@ public class OrderController {
     @PostMapping(value="/place-order", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> createOrder(@RequestBody OrderBatchDTO orderBatch) {
-        return ResponseEntity.ok(orderService.createOrder(orderBatch).getPayload());
+        return orderService.createOrder(orderBatch);
     }
 
     @DevOnly

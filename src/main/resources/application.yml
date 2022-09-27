@@ -3,40 +3,6 @@ server:
 
 spring:
 
-  rabbitmq:
-    port: 5672
-    username: guest
-    password: guest
-    host: localhost
-
-  cloud:
-    stream:
-      function:
-        bindings:
-          createOrder-in-0: input1
-          createOrder-out-0: output1
-      bindings:
-        input1:
-          group: thorium-core-input-queue.local
-        output1:
-          destination: thorium-core-output-queue
-      rabbit:
-        bindings:
-          input1:
-            consumer:
-              exchange-type: direct
-              declare-exchange: false
-              bind-queue: false
-              queue-name-group-only: true
-          output1:
-            producer:
-              exchange-type: direct
-              declare-exchange: false
-              bind-queue: false
-              routing-key-expression: '''#'''
-    function:
-      definition: createOrder
-
   groovy:
     template:
       check-template-location: false
