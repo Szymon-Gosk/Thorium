@@ -1,0 +1,11 @@
+###
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "personCode": "JKA11",
+  "username": "jankowalski12",
+  "email": "jan.kowalski.12@example.com",
+  "password": "janek123!",
+  "repeatedPassword": "janek123!"
+}

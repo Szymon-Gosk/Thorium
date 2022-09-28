@@ -23,7 +23,7 @@ public class UserController {
     @PostMapping(value="/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> createUser(@RequestBody RegistrationInformationDTO registrationInformationDTO) {
-        return null;
+        return userService.createUser(registrationInformationDTO);
     }
 
 }
