@@ -53,13 +53,6 @@ public class User {
         this.person = person;
     }
 
-    @Builder
-    public User(String username, String passwordHash, Person person) {
-        this.username = username;
-        this.passwordHash = passwordHash;
-        this.person = person;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,8 +1,7 @@
 package gosk.szymon.processing;
 
-import gosk.szymon.dev.DevOnly;
-import gosk.szymon.repositories.PersonRepository;
 import gosk.szymon.model.user.Person;
+import gosk.szymon.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@DevOnly
 @Service
 public class PersonService {
 

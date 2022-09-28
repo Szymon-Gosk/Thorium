@@ -44,6 +44,7 @@ public class UserService {
                 personRepository
                         .findByCode(informationDTO.getPersonCode())
                         .ifPresent(person -> createAndSaveUser(informationDTO, person));
+                // TODO : bug code falls down
             }
             return createBadRequest("Username is not unique");
         }

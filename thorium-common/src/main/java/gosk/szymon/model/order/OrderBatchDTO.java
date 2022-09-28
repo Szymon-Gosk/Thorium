@@ -4,4 +4,5 @@ import gosk.szymon.model.user.Person;
 
 import java.util.List;
 
-public record OrderBatchDTO(Person person, List<Order> orders) { }
+public record OrderBatchDTO(Person person, List<Order> orders) {
+}

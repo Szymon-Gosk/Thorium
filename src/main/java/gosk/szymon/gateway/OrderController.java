@@ -1,7 +1,5 @@
 package gosk.szymon.gateway;
 
-import gosk.szymon.dev.DevOnly;
-import gosk.szymon.dev.DevTools;
 import gosk.szymon.model.order.OrderBatchDTO;
 import gosk.szymon.processing.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping(value="/place-order", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/place-order", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> createOrder(@RequestBody OrderBatchDTO orderBatch) {
         return orderService.createOrder(orderBatch);

@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8080/dev/post-people
+POST http://localhost:8080/post-people
 Content-Type: application/json
 
 [

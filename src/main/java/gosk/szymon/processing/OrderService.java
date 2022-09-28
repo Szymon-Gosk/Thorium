@@ -1,11 +1,10 @@
 package gosk.szymon.processing;
 
-import gosk.szymon.dev.DevTools;
-import gosk.szymon.repositories.PersonRepository;
 import gosk.szymon.model.order.Order;
 import gosk.szymon.model.order.OrderBatchDTO;
 import gosk.szymon.model.user.Person;
 import gosk.szymon.repositories.OrderRepository;
+import gosk.szymon.repositories.PersonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,20 +18,17 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final PersonRepository personRepository;
 
-    private final DevTools devTools;
-
     @Autowired
-    public OrderService(OrderRepository orderRepository, PersonRepository personRepository, DevTools devTools) {
+    public OrderService(OrderRepository orderRepository, PersonRepository personRepository) {
         this.orderRepository = orderRepository;
         this.personRepository = personRepository;
-        this.devTools = devTools;
     }
 
     public ResponseEntity<String> createOrder(OrderBatchDTO orderBatch) {
         try {
             Person person = findPersonFrom(orderBatch);
             orderBatch.orders().forEach(order -> saveOrder(order, person));
-            return devTools.getOrders();
+            return ResponseEntity.ok("Created");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity

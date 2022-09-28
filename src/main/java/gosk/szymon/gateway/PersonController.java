@@ -1,6 +1,5 @@
 package gosk.szymon.gateway;
 
-import gosk.szymon.dev.DevOnly;
 import gosk.szymon.model.user.Person;
 import gosk.szymon.processing.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@DevOnly
 @RestController
 public class PersonController {
 
@@ -24,7 +22,7 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @PostMapping(value="/dev/post-people", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/post-people", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> createPersons(@RequestBody List<Person> people) {
         return personService.createPersons(people);
