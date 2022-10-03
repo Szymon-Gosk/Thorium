@@ -1,0 +1,32 @@
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.a-box {
+  text-decoration: none;
+}
+.a-box:link {
+  text-decoration: none;
+}
+.a-box:hover {
+  text-decoration: none;
+}
+.a-visited {
+  text-decoration: none;
+}
+.a-box:active {
+  text-decoration: none;
+}
+
+.non-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
